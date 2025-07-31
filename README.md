@@ -131,6 +131,4 @@ Developed by [@rzl-app](https://github.com/rzl-app) — built for personal and t
 ## 🪪 License
 
 The MIT License (MIT)  
-See [LICENSE.md](https://github.com/rzl-app/rzl-next-kits/blob/main/LICENSE.md) for full details.
-# rzl-next-kits
-# rzl-next-kits
+See [LICENSE.md](https://github.com/rzl-app/rzl-next-kits/blob/main/LICENSE.md) for full details. 
