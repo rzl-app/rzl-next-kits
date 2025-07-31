@@ -35,7 +35,7 @@
 
 ---
 
-> ⚠️ **This is a BETA release.**  
+> ⚠️ **This is a BETA Version release.**  
 > APIs, naming, or file structures may still change before v1.0.0.
 
 > Type-safe utilities, opinionated conventions, and clean abstractions — designed to make your Next.js projects faster, cleaner, and more maintainable.
