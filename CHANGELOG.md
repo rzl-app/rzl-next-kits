@@ -1,3 +1,8 @@
+## [0.0.58](https://github.com/rzl-app/rzl-next-kits/compare/v0.0.57...v0.0.58) (2025-07-31)
+
+### Bug Fixes
+
+* release-patch.mjs and add .conventional-changelogrc.json ([ff330a9](https://github.com/rzl-app/rzl-next-kits/commit/ff330a987afeae064c05df334f94a01443605bfc))
 ## [0.0.57](https://github.com/rzl-app/rzl-next-kits/compare/v0.0.56...v0.0.57) (2025-07-31)
 ## [0.0.56](https://github.com/rzl-app/rzl-next-kits/compare/v0.0.55...v0.0.56) (2025-07-31)
 
