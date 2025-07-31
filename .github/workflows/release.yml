@@ -59,7 +59,7 @@ jobs:
           fi
 
           if [[ "$PREV_TAG" == "main" || -z "$PREV_TAG" ]]; then
-            FULL_LINK="**Full Changelog**: https://github.com/rzl-app/rzl-next-kits/compare/${VERSION}"
+            FULL_LINK="**Full Changelog**: https://github.com/rzl-app/rzl-next-kits/commits/${VERSION}"
           else
             FULL_LINK="**Full Changelog**: https://github.com/rzl-app/rzl-next-kits/compare/${PREV_TAG}...${VERSION}"
           fi
