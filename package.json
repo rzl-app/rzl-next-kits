@@ -73,7 +73,7 @@
     "release-major": "node scripts/release-patch.mjs major",
     "check-publish": "npm pack --dry-run",
     "prepublishOnly": "pnpm test && pnpm lint && pnpm build",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0",
+    "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s -r 0 --config .conventional-changelogrc.json",
     "test": "mocha \"**/*.test.ts\" --retries 2",
     "typecheck": "tsc --noEmit"
   },
