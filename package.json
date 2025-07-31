@@ -1,6 +1,6 @@
 {
   "name": "rzl-next-kits",
-  "version": "0.0.60",
+  "version": "0.0.61",
   "description": "A flexible and extensible Next.js toolkit for modern fullstack app development, featuring utilities, helpers, and conventions tailored for clean code architecture.",
   "keywords": [
     "next",
