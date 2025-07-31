@@ -1,0 +1,111 @@
+{
+  "name": "rzl-next-kits",
+  "version": "0.0.54",
+  "description": "A flexible and extensible Next.js toolkit for modern fullstack app development, featuring utilities, helpers, and conventions tailored for clean code architecture.",
+  "keywords": [
+    "next",
+    "nextjs",
+    "react",
+    "next utils",
+    "utils",
+    "ts",
+    "utility",
+    "kit",
+    "nextjs kit",
+    "typescript",
+    "rzl-next-kits",
+    "next extra"
+  ],
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "homepage": "https://github.com/rzl-app/rzl-next-kits",
+  "repository": "github:rzl-app/rzl-next-kits",
+  "license": "MIT",
+  "author": {
+    "name": "Rizalvin Dwiky",
+    "email": "rizalvindwiky1998@gmail.com",
+    "url": "https://github.com/rzl-app"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./extra": {
+      "require": "./dist/extra/index.cjs",
+      "import": "./dist/extra/index.js"
+    },
+    "./extra-context": {
+      "require": "./dist/extra/context.cjs",
+      "import": "./dist/extra/context.js"
+    }
+  },
+  "main": "dist/extra/index.js",
+  "types": "./dist/extra",
+  "typesVersions": {
+    "*": {
+      "extra": [
+        "dist/extra/index.d.cts",
+        "dist/extra/index.d.ts"
+      ],
+      "extra-context": [
+        "dist/extra/context.d.cts",
+        "dist/extra/context.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "/dist/**/*",
+    "!**/*.test.*"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "format": "prettier --write .",
+    "no-newline": "tsx scripts/remove-final-newline.ts",
+    "format:check": "prettier --check .",
+    "lint": "pnpm typecheck && eslint .",
+    "lint:fix": "eslint --fix .",
+    "release-patch": "node scripts/release-patch.mjs",
+    "release-minor": "node scripts/release-patch.mjs minor",
+    "release-major": "node scripts/release-patch.mjs major",
+    "check-publish": "npm pack --dry-run",
+    "prepublishOnly": "pnpm test && pnpm lint && pnpm format:check && pnpm build",
+    "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s -r 0",
+    "test": "mocha \"**/*.test.ts\" --retries 2",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "deepmerge": "^4.3.1",
+    "p-safe": "^1.0.0"
+  },
+  "devDependencies": {
+    "@edge-runtime/cookies": "^5.0.2",
+    "@eslint/js": "^9.16.0",
+    "@types/chai": "^5.2.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.16.5",
+    "@types/react": "^18.3.23",
+    "chai": "^5.2.1",
+    "conventional-changelog-cli": "^5.0.0",
+    "eslint": "^9.31.0",
+    "fast-glob": "^3.3.3",
+    "mocha": "^10.8.2",
+    "next": "^15.4.2",
+    "prettier": "^3.6.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rzl-utils-js": "^0.2.9",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.16.0"
+  },
+  "peerDependencies": {
+    "next": "14 || 15",
+    "react": "18 || 19"
+  },
+  "packageManager": "pnpm@10.13.1"
+}

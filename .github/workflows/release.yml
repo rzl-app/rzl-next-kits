@@ -1,0 +1,102 @@
+name: Release Package
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  create-github-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Fetch all tags
+        run: git fetch --tags
+
+      - name: Extract latest changelog
+        id: extract
+        shell: bash
+        run: |
+          VERSION="${{ github.ref_name }}"
+          VERSION_NO_V="${VERSION#v}"
+
+          VERSIONS=($(git tag --sort=version:refname | grep '^v'))
+          PREV_TAG="main"
+          for i in "${!VERSIONS[@]}"; do
+            if [[ "${VERSIONS[$i]}" == "$VERSION" ]]; then
+              if [[ $i -gt 0 ]]; then
+                PREV_TAG="${VERSIONS[$((i-1))]}"
+              fi
+              break
+            fi
+          done
+
+
+          CHANGELOG=$(awk -v ver="$VERSION_NO_V" '
+            $0 ~ "^## \\[" ver "\\]\\(.*\\)[[:space:]]*\\(" {found=1; next}
+            $0 ~ "^## \\[" ver "\\][[:space:]]*(\\(.*\\))?[[:space:]]*(-|\\()?" {found=1; next}
+            found && /^## \[/ {exit}
+            found {print}
+          ' CHANGELOG.md)
+
+          if [ -z "$CHANGELOG" ]; then
+            echo "⚠️ Changelog not found for version $VERSION_NO_V"
+            CHANGELOG="No changelog found for version $VERSION_NO_V."
+          fi
+
+          if [[ "$PREV_TAG" == "main" || -z "$PREV_TAG" ]]; then
+            FULL_LINK="**Full Changelog**: https://github.com/rzl-app/rzl-next-kits/compare/${VERSION}"
+          else
+            FULL_LINK="**Full Changelog**: https://github.com/rzl-app/rzl-next-kits/compare/${PREV_TAG}...${VERSION}"
+          fi
+
+          echo "body<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$CHANGELOG" >> "$GITHUB_OUTPUT"
+          echo "" >> "$GITHUB_OUTPUT"
+          echo "$FULL_LINK" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref }}
+          name: Release ${{ github.ref_name }}
+          body: ${{ steps.extract.outputs.body }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-npm-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
