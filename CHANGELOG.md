@@ -1,3 +1,4 @@
+## [0.0.59](https://github.com/rzl-app/rzl-next-kits/compare/v0.0.58...v0.0.59) (2025-07-31)
 ## [0.0.58](https://github.com/rzl-app/rzl-next-kits/compare/v0.0.57...v0.0.58) (2025-07-31)
 
 ### Bug Fixes
