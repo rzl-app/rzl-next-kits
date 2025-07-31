@@ -1,4 +1,9 @@
-## 0.0.55 (2025-07-31)
+## [0.0.56](https://github.com/rzl-app/rzl-next-kits/compare/v0.0.55...v0.0.56) (2025-07-31)
+
+### Bug Fixes
+
+* release.yml 0.0.55 ([625735b](https://github.com/rzl-app/rzl-next-kits/commit/625735be7781b16c118fe59807e1c4dddad2395f))
+## [0.0.55](https://github.com/rzl-app/rzl-next-kits/compare/e9314f12a771136f3f2eb2b71c7b4638a3412159...v0.0.55) (2025-07-31)
 
 ### Features
 
