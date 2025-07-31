@@ -1,0 +1,63 @@
+{
+  "commitUrlFormat": "https://github.com/rzl-app/rzl-next-kits/commit/{{hash}}",
+  "compareUrlFormat": "https://github.com/rzl-app/rzl-next-kits/compare/{{previousTag}}...{{currentTag}}",
+  "footerPartial": "",
+  "headerPartial": "",
+  "issueUrlFormat": "https://github.com/rzl-app/rzl-next-kits/issues/{{id}}",
+  "noteKeywords": [
+    "BREAKING CHANGE",
+    "BREAKING CHANGES"
+  ],
+  "showAuthor": true,
+  "skip": {
+    "commits": null,
+    "tag": null
+  },
+  "types": [
+    {
+      "section": "✨ Features",
+      "type": "feat"
+    },
+    {
+      "section": "🐛 Bug Fixes",
+      "type": "fix"
+    },
+    {
+      "section": "📝 Documentation",
+      "type": "docs"
+    },
+    {
+      "section": "💄 Code Style",
+      "type": "style"
+    },
+    {
+      "section": "♻️ Refactoring",
+      "type": "refactor"
+    },
+    {
+      "section": "⚡ Performance Improvements",
+      "type": "perf"
+    },
+    {
+      "section": "✅ Tests",
+      "type": "test"
+    },
+    {
+      "section": "📦 Build System",
+      "type": "build"
+    },
+    {
+      "section": "🔁 CI/CD",
+      "type": "ci"
+    },
+    {
+      "section": "🧹 Chores",
+      "type": "chore"
+    },
+    {
+      "section": "⏪ Reverts",
+      "type": "revert"
+    }
+  ],
+  "userUrlFormat": "https://github.com/{{user}}"
+}

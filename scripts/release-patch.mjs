@@ -14,7 +14,7 @@ execSync(`pnpm changelog --tag ${tag}`, { stdio: "inherit" });
 
 // Step 4: Commit changes
 execSync(`git add package.json CHANGELOG.md`, { stdio: "inherit" });
-execSync(`git commit -m "chore(release): ${tag}"`, { stdio: "inherit" });
+execSync(`git commit -m "chore: Release ${tag}"`, { stdio: "inherit" });
 
 // Step 5: Create tag and push to remote
 execSync(`git tag ${tag}`, { stdio: "inherit" });
